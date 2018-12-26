@@ -14,13 +14,13 @@ namespace MZcms.Web.Framework
 {
     public abstract class BaseExpressController : BaseWebController
     {
-        public new SiteSettingsInfo CurrentSiteSetting
-        {
-            get
-            {
-                return ServiceHelper.Create<ISiteSettingService>().GetSiteSettings();
-            }
-        }
+        //public new SiteSettingsInfo CurrentSiteSetting
+        //{
+        //    get
+        //    {
+        //        return ServiceHelper.Create<ISiteSettingService>().GetSiteSettings();
+        //    }
+        //}
 
         protected BaseExpressController()
         {

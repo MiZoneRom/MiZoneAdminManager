@@ -28,13 +28,13 @@ namespace MZcms.Web.Framework
             set;
         }
 
-        public SiteSettingsInfo CurrentSiteSetting
-        {
-            get
-            {
-                return ServiceHelper.Create<ISiteSettingService>().GetSiteSettings();
-            }
-        }
+        //public SiteSettingsInfo CurrentSiteSetting
+        //{
+        //    get
+        //    {
+        //        return ServiceHelper.Create<ISiteSettingService>().GetSiteSettings();
+        //    }
+        //}
 
         protected bool isCanClearLoginStatus
         {
@@ -90,14 +90,14 @@ namespace MZcms.Web.Framework
 
         public BaseController()
         {
-            if (!IsInstalled())
-            {
-                base.RedirectToAction("/Web/Installer/Agreement");
-                return;
-            }
-            ((dynamic)base.ViewBag).SEODescription = CurrentSiteSetting.Site_SEODescription;
-            ((dynamic)base.ViewBag).SEOKeyword = CurrentSiteSetting.Site_SEOKeywords;
-            ((dynamic)base.ViewBag).FlowScript = CurrentSiteSetting.FlowScript;
+            //if (!IsInstalled())
+            //{
+            //    base.RedirectToAction("/Web/Installer/Agreement");
+            //    return;
+            //}
+            //((dynamic)base.ViewBag).SEODescription = CurrentSiteSetting.Site_SEODescription;
+            //((dynamic)base.ViewBag).SEOKeyword = CurrentSiteSetting.Site_SEOKeywords;
+            //((dynamic)base.ViewBag).FlowScript = CurrentSiteSetting.FlowScript;
         }
 
         private void ClearLoginCookie()
@@ -124,27 +124,27 @@ namespace MZcms.Web.Framework
 
         private void DisposeService(System.Web.Mvc.ControllerContext filterContext)
         {
-            if (filterContext.IsChildAction)
-            {
-                return;
-            }
-            List<IService> item = filterContext.HttpContext.Session["_serviceInstace"] as List<IService>;
-            if (item != null)
-            {
-                foreach (IService service in item)
-                {
-                    try
-                    {
-                        service.Dispose();
-                    }
-                    catch (Exception exception1)
-                    {
-                        Exception exception = exception1;
-                        Log.Error(string.Concat(service.GetType().ToString(), "释放失败！"), exception);
-                    }
-                }
-                filterContext.HttpContext.Session["_serviceInstace"] = null;
-            }
+            //if (filterContext.IsChildAction)
+            //{
+            //    return;
+            //}
+            //List<IService> item = filterContext.HttpContext.Session["_serviceInstace"] as List<IService>;
+            //if (item != null)
+            //{
+            //    foreach (IService service in item)
+            //    {
+            //        try
+            //        {
+            //            service.Dispose();
+            //        }
+            //        catch (Exception exception1)
+            //        {
+            //            Exception exception = exception1;
+            //            Log.Error(string.Concat(service.GetType().ToString(), "释放失败！"), exception);
+            //        }
+            //    }
+            //    filterContext.HttpContext.Session["_serviceInstace"] = null;
+            //}
         }
 
         private Exception GerInnerException(Exception ex)
@@ -338,109 +338,109 @@ namespace MZcms.Web.Framework
         //手机网址跳转
         protected void JumpMobileUrl(System.Web.Routing.RouteData route, string url = "")
         {
-            string pathAndQuery = base.Request.Url.PathAndQuery;
-            string wX = pathAndQuery;
-            if (route == null)
-            {
-                return;
-            }
-            string lower = route.Values["controller"].ToString().ToLower();
-            string str = route.Values["action"].ToString().ToLower();
-            string str1 = (route.DataTokens["area"] == null ? "" : route.DataTokens["area"].ToString().ToLower());
+            //string pathAndQuery = base.Request.Url.PathAndQuery;
+            //string wX = pathAndQuery;
+            //if (route == null)
+            //{
+            //    return;
+            //}
+            //string lower = route.Values["controller"].ToString().ToLower();
+            //string str = route.Values["action"].ToString().ToLower();
+            //string str1 = (route.DataTokens["area"] == null ? "" : route.DataTokens["area"].ToString().ToLower());
 
-            if (str1 == "mobile")
-            {
-                return;
-            }
-            if (str1 == "web")
-            {
-                IsAutoJumpMobile = true;
-            }
-            if (lower == "shoppano")//如果是全景店铺 不跳转
-            {
-                return;
-            }
-            if (str == "getcartproducts")
-            {
-                return;
-            }
-            if (lower == "game")//如果游戏
-            {
-                return;
-            }
-            if (IsAutoJumpMobile && IsMobileTerminal && Regex.Match(pathAndQuery, "\\/m(\\-.*)?").Length < 1)
-            {
-                JumpUrlRoute routeUrl = GetRouteUrl(lower, str, str1, pathAndQuery);
-                switch (visitorTerminalInfo.Terminal)
-                {
-                    case EnumVisitorTerminal.WeiXin:
-                        {
-                            if (routeUrl != null)
-                            {
-                                wX = routeUrl.WX;
-                            }
-                            wX = string.Concat("/m-weixin", wX);
+            //if (str1 == "mobile")
+            //{
+            //    return;
+            //}
+            //if (str1 == "web")
+            //{
+            //    IsAutoJumpMobile = true;
+            //}
+            //if (lower == "shoppano")//如果是全景店铺 不跳转
+            //{
+            //    return;
+            //}
+            //if (str == "getcartproducts")
+            //{
+            //    return;
+            //}
+            //if (lower == "game")//如果游戏
+            //{
+            //    return;
+            //}
+            //if (IsAutoJumpMobile && IsMobileTerminal && Regex.Match(pathAndQuery, "\\/m(\\-.*)?").Length < 1)
+            //{
+            //    JumpUrlRoute routeUrl = GetRouteUrl(lower, str, str1, pathAndQuery);
+            //    switch (visitorTerminalInfo.Terminal)
+            //    {
+            //        case EnumVisitorTerminal.WeiXin:
+            //            {
+            //                if (routeUrl != null)
+            //                {
+            //                    wX = routeUrl.WX;
+            //                }
+            //                wX = string.Concat("/m-weixin", wX);
 
-                            break;
-                        }
-                    case EnumVisitorTerminal.IOS:
-                        {
-                            if (routeUrl != null)
-                            {
-                                wX = routeUrl.WAP;
-                            }
-                            wX = string.Concat("/m-ios", wX);
-                            break;
-                        }
-                    default:
-                        {
-                            if (routeUrl != null)
-                            {
-                                wX = routeUrl.WAP;
-                            }
-                            wX = string.Concat("/m-wap", wX);
-                            break;
-                        }
-                }
-                if (routeUrl.IsSpecial)
-                {
-                    if (routeUrl.PC.ToLower() == "/shop")
-                    {
-                        string str2 = route.Values["id"].ToString();
-                        long num = 0;
-                        long id = 0;
-                        if (!long.TryParse(str2, out num))
-                        {
-                            num = 0;
-                        }
-                        if (num > 0)
-                        {
-                            VShopInfo vShopByShopId = ServiceHelper.Create<IVShopService>().GetVShopByShopId(num);
-                            if (vShopByShopId != null)
-                            {
-                                id = vShopByShopId.Id;
-                            }
-                        }
-                        wX = string.Concat(wX, "/", id.ToString());
-                    }
-                    if (routeUrl.PC.ToLower() == "/order/submit")
-                    {
-                        string empty = string.Empty;
-                        object item = route.Values["cartitemids"];
-                        empty = (item != null ? item.ToString() : base.Request.QueryString["cartitemids"]);
-                        wX = string.Concat(wX, "/?cartItemIds=", empty);
-                    }
-                }
-                if (!string.IsNullOrWhiteSpace(url))
-                {
-                    wX = url;
-                }
-                if (!IsExistPage(string.Concat(base.Request.Url.Scheme, "://", base.Request.Url.Authority, wX)))
-                {
-                    wX = (visitorTerminalInfo.Terminal != EnumVisitorTerminal.WeiXin ? "/m-wap/" : "/m-weixin/");
-                }
-                base.Response.Redirect(wX);
-            }
+            //                break;
+            //            }
+            //        case EnumVisitorTerminal.IOS:
+            //            {
+            //                if (routeUrl != null)
+            //                {
+            //                    wX = routeUrl.WAP;
+            //                }
+            //                wX = string.Concat("/m-ios", wX);
+            //                break;
+            //            }
+            //        default:
+            //            {
+            //                if (routeUrl != null)
+            //                {
+            //                    wX = routeUrl.WAP;
+            //                }
+            //                wX = string.Concat("/m-wap", wX);
+            //                break;
+            //            }
+            //    }
+            //    if (routeUrl.IsSpecial)
+            //    {
+            //        if (routeUrl.PC.ToLower() == "/shop")
+            //        {
+            //            string str2 = route.Values["id"].ToString();
+            //            long num = 0;
+            //            long id = 0;
+            //            if (!long.TryParse(str2, out num))
+            //            {
+            //                num = 0;
+            //            }
+            //            if (num > 0)
+            //            {
+            //                VShopInfo vShopByShopId = ServiceHelper.Create<IVShopService>().GetVShopByShopId(num);
+            //                if (vShopByShopId != null)
+            //                {
+            //                    id = vShopByShopId.Id;
+            //                }
+            //            }
+            //            wX = string.Concat(wX, "/", id.ToString());
+            //        }
+            //        if (routeUrl.PC.ToLower() == "/order/submit")
+            //        {
+            //            string empty = string.Empty;
+            //            object item = route.Values["cartitemids"];
+            //            empty = (item != null ? item.ToString() : base.Request.QueryString["cartitemids"]);
+            //            wX = string.Concat(wX, "/?cartItemIds=", empty);
+            //        }
+            //    }
+            //    if (!string.IsNullOrWhiteSpace(url))
+            //    {
+            //        wX = url;
+            //    }
+            //    if (!IsExistPage(string.Concat(base.Request.Url.Scheme, "://", base.Request.Url.Authority, wX)))
+            //    {
+            //        wX = (visitorTerminalInfo.Terminal != EnumVisitorTerminal.WeiXin ? "/m-wap/" : "/m-weixin/");
+            //    }
+            //    base.Response.Redirect(wX);
+            //}
         }
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
@@ -452,10 +452,10 @@ namespace MZcms.Web.Framework
         protected override void OnAuthorization(AuthorizationContext filterContext)
         {
             InitVisitorTerminal();
-            if (IsInstalled() && CurrentSiteSetting.SiteIsClose && filterContext.RouteData.Values["controller"].ToString().ToLower() != "admin")
-            {
-                filterContext.Result = new RedirectResult("/common/site/close");
-            }
+            //if (IsInstalled() && CurrentSiteSetting.SiteIsClose && filterContext.RouteData.Values["controller"].ToString().ToLower() != "admin")
+            //{
+            //    filterContext.Result = new RedirectResult("/common/site/close");
+            //}
         }
 
         protected override void OnException(ExceptionContext filterContext)

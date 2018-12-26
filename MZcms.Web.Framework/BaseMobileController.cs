@@ -16,39 +16,39 @@ namespace MZcms.Web.Framework
     {
         private static Dictionary<string, string> platformTypesStringMap;
 
-        public UserMemberInfo CurrentUser
-        {
-            get
-            {
-                long num = UserCookieEncryptHelper.Decrypt(WebHelper.GetCookie("MZcms-User"), "Mobile");
-                if (num == 0)
-                {
-                    return null;
-                }
-                return ServiceHelper.Create<IMemberService>().GetMember(num);
-            }
-        }
+        //public UserMemberInfo CurrentUser
+        //{
+        //    get
+        //    {
+        //        long num = UserCookieEncryptHelper.Decrypt(WebHelper.GetCookie("MZcms-User"), "Mobile");
+        //        if (num == 0)
+        //        {
+        //            return null;
+        //        }
+        //        return ServiceHelper.Create<IMemberService>().GetMember(num);
+        //    }
+        //}
 
-        public UserMemberInfo CurrentUserAllPlatform
-        {
-            get
-            {
-                long num = UserCookieEncryptHelper.Decrypt(WebHelper.GetCookie("MZcms-User"), "Mobile");
-                if (num == 0)
-                {
-                    long num2 = UserCookieEncryptHelper.Decrypt(WebHelper.GetCookie("MZcms-User"), "Web");
-                    if (num2 != 0)
-                    {
-                        return ServiceHelper.Create<IMemberService>().GetMember(num2);
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
-                return ServiceHelper.Create<IMemberService>().GetMember(num);
-            }
-        }
+        //public UserMemberInfo CurrentUserAllPlatform
+        //{
+        //    get
+        //    {
+        //        long num = UserCookieEncryptHelper.Decrypt(WebHelper.GetCookie("MZcms-User"), "Mobile");
+        //        if (num == 0)
+        //        {
+        //            long num2 = UserCookieEncryptHelper.Decrypt(WebHelper.GetCookie("MZcms-User"), "Web");
+        //            if (num2 != 0)
+        //            {
+        //                return ServiceHelper.Create<IMemberService>().GetMember(num2);
+        //            }
+        //            else
+        //            {
+        //                return null;
+        //            }
+        //        }
+        //        return ServiceHelper.Create<IMemberService>().GetMember(num);
+        //    }
+        //}
 
         public MZcms.Core.PlatformType PlatformType
         {
@@ -82,26 +82,26 @@ namespace MZcms.Web.Framework
             }
         }
 
-        protected override void OnActionExecuting(ActionExecutingContext filterContext)
-        {
-            ((dynamic)base.ViewBag).AreaName = string.Format("m-{0}", PlatformType.ToString());
-            ((dynamic)base.ViewBag).Logo = base.CurrentSiteSetting.Logo;
-            ((dynamic)base.ViewBag).SiteName = base.CurrentSiteSetting.SiteName;
-            string cookie = WebHelper.GetCookie("MZcms-Mobile-AppType");
-            string str = WebHelper.GetCookie("MZcms-VShopId");
-            if (cookie == string.Empty && filterContext.HttpContext.Request["shop"] != null)
-            {
-                cookie = filterContext.HttpContext.Request["shop"].ToString();
-                long num = 0;
-                if (long.TryParse(cookie, out num))
-                {
-                    WebHelper.SetCookie("MZcms-VShopId", (ServiceHelper.Create<IVShopService>().GetVShopByShopId(num) ?? new VShopInfo()).Id.ToString());
-                }
-                WebHelper.SetCookie("MZcms-Mobile-AppType", cookie);
-            }
-            ((dynamic)base.ViewBag).MAppType = cookie;
-            ((dynamic)base.ViewBag).MVshopId = str;
-            base.OnActionExecuting(filterContext);
-        }
+        //protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        //{
+        //    ((dynamic)base.ViewBag).AreaName = string.Format("m-{0}", PlatformType.ToString());
+        //    ((dynamic)base.ViewBag).Logo = base.CurrentSiteSetting.Logo;
+        //    ((dynamic)base.ViewBag).SiteName = base.CurrentSiteSetting.SiteName;
+        //    string cookie = WebHelper.GetCookie("MZcms-Mobile-AppType");
+        //    string str = WebHelper.GetCookie("MZcms-VShopId");
+        //    if (cookie == string.Empty && filterContext.HttpContext.Request["shop"] != null)
+        //    {
+        //        cookie = filterContext.HttpContext.Request["shop"].ToString();
+        //        long num = 0;
+        //        if (long.TryParse(cookie, out num))
+        //        {
+        //            WebHelper.SetCookie("MZcms-VShopId", (ServiceHelper.Create<IVShopService>().GetVShopByShopId(num) ?? new VShopInfo()).Id.ToString());
+        //        }
+        //        WebHelper.SetCookie("MZcms-Mobile-AppType", cookie);
+        //    }
+        //    ((dynamic)base.ViewBag).MAppType = cookie;
+        //    ((dynamic)base.ViewBag).MVshopId = str;
+        //    base.OnActionExecuting(filterContext);
+        //}
     }
 }

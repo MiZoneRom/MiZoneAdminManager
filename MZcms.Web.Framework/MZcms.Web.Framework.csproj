@@ -35,6 +35,7 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -99,6 +100,10 @@
     <ProjectReference Include="..\MZcms.Core\MZcms.Core.csproj">
       <Project>{0dd5872a-886c-49d6-a1c4-2f70e8fdc413}</Project>
       <Name>MZcms.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MZcms.IServices\MZcms.IServices.csproj">
+      <Project>{5d2899b8-d510-4d0b-b239-a01b2ad28f06}</Project>
+      <Name>MZcms.IServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\MZcms.Model\MZcms.Model.csproj">
       <Project>{dbbdf587-18a1-4723-863d-eb0f2be230ba}</Project>
