@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Config\quartz_jobs.xml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -138,14 +139,21 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
-    <Folder Include="Config\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MZcms.Core\MZcms.Core.csproj">
+      <Project>{0dd5872a-886c-49d6-a1c4-2f70e8fdc413}</Project>
+      <Name>MZcms.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MZcms.IServices\MZcms.IServices.csproj">
       <Project>{5d2899b8-d510-4d0b-b239-a01b2ad28f06}</Project>
       <Name>MZcms.IServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MZcms.Model\MZcms.Model.csproj">
+      <Project>{dbbdf587-18a1-4723-863d-eb0f2be230ba}</Project>
+      <Name>MZcms.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\MZcms.SmallProgAPI\MZcms.SmallProgAPI.csproj">
       <Project>{f47093f0-129b-479e-b3b9-9bdbb189ca1c}</Project>

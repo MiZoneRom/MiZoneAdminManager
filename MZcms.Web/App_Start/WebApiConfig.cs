@@ -28,7 +28,7 @@ namespace MZcms.Web
             );
 
 #if DEBUG
-            Himall.Core.Log.Debug("[OpenApi]RegRoute-DefaultOpenApi");
+            MZcms.Core.Log.Debug("[OpenApi]RegRoute-DefaultOpenApi");
 #endif
 
             config.Routes.MapHttpRoute(
