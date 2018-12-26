@@ -32,6 +32,11 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MZcms.Web\bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +45,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionPermission.cs" />
+    <Compile Include="AdminPermission.cs" />
+    <Compile Include="ApiExceptionFilterAttribute.cs" />
+    <Compile Include="AreaRegistrationOrder.cs" />
+    <Compile Include="BaseAdminController.cs" />
+    <Compile Include="BaseAsyncController.cs" />
+    <Compile Include="BaseController.cs" />
+    <Compile Include="BaseExpressController.cs" />
+    <Compile Include="BaseMemberController.cs" />
+    <Compile Include="BaseMobileController.cs" />
+    <Compile Include="BaseMobileMemberController.cs" />
+    <Compile Include="BaseMobileShopMemberController.cs" />
+    <Compile Include="BaseMobileTemplatesController.cs" />
+    <Compile Include="BaseSellerController.cs" />
+    <Compile Include="BaseWebController.cs" />
+    <Compile Include="CookieKeysCollection.cs" />
+    <Compile Include="EnumVisitorBrowserCore.cs" />
+    <Compile Include="EnumVisitorOperaSystem.cs" />
+    <Compile Include="EnumVisitorTerminal.cs" />
+    <Compile Include="GZipAttribute.cs" />
+    <Compile Include="HiAPIController.cs" />
+    <Compile Include="IMobileOAuth.cs" />
+    <Compile Include="JumpUrlRoute.cs" />
+    <Compile Include="MobileOAuthUserInfo.cs" />
+    <Compile Include="NoCompress.cs" />
+    <Compile Include="OperationLogAttribute.cs" />
+    <Compile Include="PrivilegeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SellerPermission.cs" />
+    <Compile Include="ServiceHelper.cs" />
+    <Compile Include="ShopOperationLogAttribute.cs" />
+    <Compile Include="UnAuthorize.cs" />
+    <Compile Include="UserCookieEncryptHelper.cs" />
+    <Compile Include="VisitorTerminal.cs" />
+    <Compile Include="WebViewPage.cs" />
+    <Compile Include="WebViewPage_TModel_.cs" />
+    <Compile Include="WeixinOAuth.cs" />
+    <Compile Include="XmlResult.cs" />
+    <Compile Include="XmlResultType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MZcms.Model\MZcms.Model.csproj">
+      <Project>{dbbdf587-18a1-4723-863d-eb0f2be230ba}</Project>
+      <Name>MZcms.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

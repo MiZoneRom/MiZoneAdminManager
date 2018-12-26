@@ -1,10 +1,12 @@
 ﻿using Autofac;
+using MZcms.Web.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace MZcms.Web
@@ -17,8 +19,12 @@ namespace MZcms.Web
             RouteTable.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             RouteTable.Routes.IgnoreRoute("Areas/");
 
-            AreaRegistration.RegisterAllAreas();
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            AreaRegistrationOrder.RegisterAllAreasOrder();
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+
         }
 
         private void SetupResolveRules(ContainerBuilder builder)
