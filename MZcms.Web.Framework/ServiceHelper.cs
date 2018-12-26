@@ -1,5 +1,5 @@
-using Himall.IServices;
-using Himall.ServiceProvider;
+using MZcms.IServices;
+using MZcms.ServiceProvider;
 using System;
 using System.Collections.Generic;
 using System.Web;

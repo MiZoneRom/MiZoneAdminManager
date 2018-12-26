@@ -1,5 +1,5 @@
-using Himall.Core.Helper;
-using Himall.Model;
+using MZcms.Core.Helper;
+using MZcms.Model;
 using System;
 using System.Web;
 using System.Web.Mvc;

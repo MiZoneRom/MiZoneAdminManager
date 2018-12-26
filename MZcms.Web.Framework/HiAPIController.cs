@@ -1,4 +1,4 @@
-﻿using Himall.Core.Helper;
+﻿using MZcms.Core.Helper;
 using System.Web.Http;
 using System.Web.Http.Results;
 

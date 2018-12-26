@@ -1,5 +1,5 @@
-using Himall.IServices;
-using Himall.Model;
+using MZcms.IServices;
+using MZcms.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -64,7 +64,7 @@ namespace MZcms.Web.Framework
                                 OpenId = jObjects1["openid"].ToString(),
                                 UnionId = (jObjects1["unionid"] == null || string.IsNullOrWhiteSpace(jObjects1["unionid"].ToString()) ? jObjects1["openid"].ToString() : jObjects1["unionid"].ToString()),
                                 Headimgurl = jObjects1["headimgurl"].ToString(),
-                                LoginProvider = "Himall.Plugin.OAuth.WeiXin"
+                                LoginProvider = "MZcms.Plugin.OAuth.WeiXin"
                             };
                             mobileOAuthUserInfo = mobileOAuthUserInfo1;
                         }
@@ -104,7 +104,7 @@ namespace MZcms.Web.Framework
                                 OpenId = jObjects1["openid"].ToString(),
                                 UnionId = (jObjects1["unionid"] == null || string.IsNullOrWhiteSpace(jObjects1["unionid"].ToString()) ? jObjects1["openid"].ToString() : jObjects1["unionid"].ToString()),
                                 Headimgurl = jObjects1["headimgurl"].ToString(),
-                                LoginProvider = "Himall.Plugin.OAuth.WeiXin",
+                                LoginProvider = "MZcms.Plugin.OAuth.WeiXin",
                                 sex = jObjects1["sex"].ToString()
                             };
                             mobileOAuthUserInfo = mobileOAuthUserInfo1;
@@ -137,7 +137,7 @@ namespace MZcms.Web.Framework
                         MobileOAuthUserInfo mobileOAuthUserInfo1 = new MobileOAuthUserInfo()
                         {
                             OpenId = jObjects["openid"].ToString(),
-                            LoginProvider = "Himall.Plugin.OAuth.WeiXin",
+                            LoginProvider = "MZcms.Plugin.OAuth.WeiXin",
                             UnionId = (jObjects["unionid"] == null || string.IsNullOrWhiteSpace(jObjects["unionid"].ToString()) ? jObjects["openid"].ToString() : jObjects["unionid"].ToString())
                         };
                         mobileOAuthUserInfo = mobileOAuthUserInfo1;

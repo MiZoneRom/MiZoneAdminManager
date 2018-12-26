@@ -1,7 +1,7 @@
-using Himall.Core.Helper;
-using Himall.IServices;
-using Himall.Model;
-using Himall.ServiceProvider;
+using MZcms.Core.Helper;
+using MZcms.IServices;
+using MZcms.Model;
+using MZcms.ServiceProvider;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;

@@ -1,4 +1,4 @@
-using Himall.Model;
+using MZcms.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -82,7 +82,7 @@ namespace MZcms.Web.Framework
 		private static IList<ActionPermission> GetAllActionByAssembly()
 		{
 			List<ActionPermission> actionPermissions = new List<ActionPermission>();
-			IEnumerable<Type> types = ((IEnumerable<Type>)Assembly.Load("Himall.Web").GetTypes()).Where((Type a) => {
+			IEnumerable<Type> types = ((IEnumerable<Type>)Assembly.Load("MZcms.Web").GetTypes()).Where((Type a) => {
 				if (a.BaseType == null)
 				{
 					return false;

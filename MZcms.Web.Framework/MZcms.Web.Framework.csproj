@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MZcms.Web.Framework</RootNamespace>
     <AssemblyName>MZcms.Web.Framework</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,9 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MZcms.Web\bin\System.Web.Mvc.dll</HintPath>
@@ -47,6 +57,7 @@
   <ItemGroup>
     <Compile Include="ActionPermission.cs" />
     <Compile Include="AdminPermission.cs" />
+    <Compile Include="ApiControllerSelector\NamespaceHttpControllerSelector.cs" />
     <Compile Include="ApiExceptionFilterAttribute.cs" />
     <Compile Include="AreaRegistrationOrder.cs" />
     <Compile Include="BaseAdminController.cs" />
@@ -58,7 +69,6 @@
     <Compile Include="BaseMobileMemberController.cs" />
     <Compile Include="BaseMobileShopMemberController.cs" />
     <Compile Include="BaseMobileTemplatesController.cs" />
-    <Compile Include="BaseSellerController.cs" />
     <Compile Include="BaseWebController.cs" />
     <Compile Include="CookieKeysCollection.cs" />
     <Compile Include="EnumVisitorBrowserCore.cs" />
@@ -86,6 +96,10 @@
     <Compile Include="XmlResultType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MZcms.Core\MZcms.Core.csproj">
+      <Project>{0dd5872a-886c-49d6-a1c4-2f70e8fdc413}</Project>
+      <Name>MZcms.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MZcms.Model\MZcms.Model.csproj">
       <Project>{dbbdf587-18a1-4723-863d-eb0f2be230ba}</Project>
       <Name>MZcms.Model</Name>

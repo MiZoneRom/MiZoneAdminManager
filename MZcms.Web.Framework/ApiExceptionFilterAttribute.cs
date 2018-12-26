@@ -1,4 +1,4 @@
-using Himall.Core;
+using MZcms.Core;
 using System;
 using System.Net.Http;
 using System.Text;
@@ -15,7 +15,7 @@ namespace MZcms.Web.Framework
 		public override void OnException(HttpActionExecutedContext context)
 		{
 			HttpResponseMessage httpResponseMessage = new HttpResponseMessage();
-			if (!(context.Exception is HimallException))
+			if (!(context.Exception is MZcmsException))
 			{
 				httpResponseMessage.Content = new StringContent(string.Concat("Success = false, Error = 102, ErrorMsg =", context.Exception.Message), Encoding.GetEncoding("UTF-8"), "application/json");
 			}

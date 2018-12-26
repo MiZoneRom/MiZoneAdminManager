@@ -1,7 +1,7 @@
-using Himall.Core;
-using Himall.Core.Helper;
-using Himall.IServices;
-using Himall.Model;
+using MZcms.Core;
+using MZcms.Core.Helper;
+using MZcms.IServices;
+using MZcms.Model;
 using Microsoft.CSharp.RuntimeBinder;
 using System;
 using System.Collections.Generic;
@@ -72,7 +72,7 @@ namespace MZcms.Web.Framework
         {
             get
             {
-                HttpCookie item = base.HttpContext.Request.Cookies["Himall_LastOpTime"];
+                HttpCookie item = base.HttpContext.Request.Cookies["MZcms_LastOpTime"];
                 DateTime? nullable = null;
                 if (item != null)
                 {
@@ -102,19 +102,19 @@ namespace MZcms.Web.Framework
 
         private void ClearLoginCookie()
         {
-            HttpCookie item = base.HttpContext.Request.Cookies["Himall-User"];
+            HttpCookie item = base.HttpContext.Request.Cookies["MZcms-User"];
             if (item != null)
             {
                 item.Expires = DateTime.Now.AddYears(-1);
                 base.HttpContext.Response.AppendCookie(item);
             }
-            item = base.HttpContext.Request.Cookies["Himall-SellerManager"];
+            item = base.HttpContext.Request.Cookies["MZcms-SellerManager"];
             if (item != null)
             {
                 item.Expires = DateTime.Now.AddYears(-1);
                 base.HttpContext.Response.AppendCookie(item);
             }
-            item = base.HttpContext.Request.Cookies["Himall_LastOpTime"];
+            item = base.HttpContext.Request.Cookies["MZcms_LastOpTime"];
             if (item != null)
             {
                 item.Expires = DateTime.Now.AddYears(-1);
@@ -463,7 +463,7 @@ namespace MZcms.Web.Framework
             Exception exception = GerInnerException(filterContext.Exception);
             string message = exception.Message;
             base.OnException(filterContext);
-            if (!(exception is HimallException))
+            if (!(exception is MZcmsException))
             {
                 string str = filterContext.RouteData.Values["controller"].ToString();
                 string str1 = filterContext.RouteData.Values["action"].ToString();
@@ -543,7 +543,7 @@ namespace MZcms.Web.Framework
             {
                 date = new DateTime?(DateTime.Now);
             }
-            HttpCookie item = base.HttpContext.Request.Cookies["Himall_LastOpTime"];
+            HttpCookie item = base.HttpContext.Request.Cookies["MZcms_LastOpTime"];
             DateTime.Now.AddYears(-1);
             if (item != null)
             {
@@ -551,7 +551,7 @@ namespace MZcms.Web.Framework
             }
             else
             {
-                item = new HttpCookie("Himall_LastOpTime");
+                item = new HttpCookie("MZcms_LastOpTime");
             }
             item.Value = date.Value.Ticks.ToString();
             base.HttpContext.Response.AppendCookie(item);

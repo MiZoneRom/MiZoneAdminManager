@@ -1,6 +1,6 @@
-﻿using Himall.Core.Helper;
-using Himall.IServices;
-using Himall.Model;
+﻿using MZcms.Core.Helper;
+using MZcms.IServices;
+using MZcms.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

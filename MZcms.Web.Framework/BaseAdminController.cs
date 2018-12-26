@@ -1,6 +1,6 @@
-using Himall.Core.Helper;
-using Himall.IServices;
-using Himall.Model;
+using MZcms.Core.Helper;
+using MZcms.IServices;
+using MZcms.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -17,7 +17,7 @@ namespace MZcms.Web.Framework
 			get
 			{
 				IPaltManager platformManager = null;
-				long num = UserCookieEncryptHelper.Decrypt(WebHelper.GetCookie("Himall-PlatformManager"), "Admin");
+				long num = UserCookieEncryptHelper.Decrypt(WebHelper.GetCookie("MZcms-PlatformManager"), "Admin");
 				if (num != 0)
 				{
 					platformManager = ServiceHelper.Create<IManagerService>().GetPlatformManager(num);

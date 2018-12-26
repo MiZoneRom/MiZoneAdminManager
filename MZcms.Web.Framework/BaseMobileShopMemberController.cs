@@ -1,7 +1,7 @@
-using Himall.Core;
-using Himall.Core.Helper;
-using Himall.IServices;
-using Himall.Model;
+using MZcms.Core;
+using MZcms.Core.Helper;
+using MZcms.IServices;
+using MZcms.Model;
 using System;
 using System.Web;
 using System.Web.Mvc;
@@ -17,13 +17,13 @@ namespace MZcms.Web.Framework
         {
         }
 
-        private Himall.Core.PlatformType GetRequestType(HttpRequestBase request)
+        private MZcms.Core.PlatformType GetRequestType(HttpRequestBase request)
         {
 
-            Himall.Core.PlatformType platformType = Himall.Core.PlatformType.Wap;
+            MZcms.Core.PlatformType platformType = MZcms.Core.PlatformType.Wap;
             if (request.UserAgent.ToLower().Contains("micromessenger"))
             {
-                platformType = Himall.Core.PlatformType.WeiXin;
+                platformType = MZcms.Core.PlatformType.WeiXin;
             }
             return platformType;
         }

@@ -32,7 +32,7 @@ namespace MZcms.Model
 
 		public ActionItem()
 		{
-            Controllers = new List<Himall.Model.Controllers>();
+            Controllers = new List<MZcms.Model.Controllers>();
 		}
 	}
 }

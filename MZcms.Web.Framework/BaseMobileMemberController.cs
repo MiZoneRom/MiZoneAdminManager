@@ -1,7 +1,7 @@
-using Himall.Core;
-using Himall.Core.Helper;
-using Himall.IServices;
-using Himall.Model;
+using MZcms.Core;
+using MZcms.Core.Helper;
+using MZcms.IServices;
+using MZcms.Model;
 using System;
 using System.Web;
 using System.Web.Mvc;
@@ -28,14 +28,14 @@ namespace MZcms.Web.Framework
             string str;
             bool flag = true;
             IMobileOAuth weixinOAuth = null;
-            if (base.PlatformType == Himall.Core.PlatformType.WeiXin)
+            if (base.PlatformType == MZcms.Core.PlatformType.WeiXin)
             {
                 weixinOAuth = new WeixinOAuth();
             }
 
             string.Format("/m-{0}/Login/Entrance?returnUrl={1}", base.PlatformType.ToString(), HttpUtility.UrlEncode(filterContext.HttpContext.Request.Url.ToString()));
 
-            if (weixinOAuth == null || GetRequestType(filterContext.HttpContext.Request) != Himall.Core.PlatformType.WeiXin)
+            if (weixinOAuth == null || GetRequestType(filterContext.HttpContext.Request) != MZcms.Core.PlatformType.WeiXin)
             {
                 flag = false;
             }
@@ -89,7 +89,7 @@ namespace MZcms.Web.Framework
                         if (appIdTypeEnum == MemberOpenIdInfo.AppIdTypeEnum.Payment)
                         {
                             string str1 = SecureHelper.AESEncrypt(userInfoBequiet.OpenId, "Mobile");
-                            WebHelper.SetCookie("Himall-User_OpenId", str1);
+                            WebHelper.SetCookie("MZcms-User_OpenId", str1);
                         }
 
                         IMemberService memberService = ServiceHelper.Create<IMemberService>();
@@ -103,7 +103,7 @@ namespace MZcms.Web.Framework
                         if (memberByOpenId == null)
                         {
 
-                            memberService.BindMember(base.CurrentUser.Id, "Himall.Plugin.OAuth.WeiXin", userInfoBequiet.OpenId, appIdTypeEnum, userInfoBequiet.Headimgurl, isMale, userInfoBequiet.UnionId);
+                            memberService.BindMember(base.CurrentUser.Id, "MZcms.Plugin.OAuth.WeiXin", userInfoBequiet.OpenId, appIdTypeEnum, userInfoBequiet.Headimgurl, isMale, userInfoBequiet.UnionId);
 
                         }
                         else
@@ -111,7 +111,7 @@ namespace MZcms.Web.Framework
 
 
                             string str2 = UserCookieEncryptHelper.Encrypt(memberByOpenId.Id, "Mobile");
-                            WebHelper.SetCookie("Himall-User", str2);
+                            WebHelper.SetCookie("MZcms-User", str2);
                         }
                     }
                 }
@@ -119,13 +119,13 @@ namespace MZcms.Web.Framework
             return flag;
         }
 
-        private Himall.Core.PlatformType GetRequestType(HttpRequestBase request)
+        private MZcms.Core.PlatformType GetRequestType(HttpRequestBase request)
         {
 
-            Himall.Core.PlatformType platformType = Himall.Core.PlatformType.Wap;
+            MZcms.Core.PlatformType platformType = MZcms.Core.PlatformType.Wap;
             if (request.UserAgent.ToLower().Contains("micromessenger"))
             {
-                platformType = Himall.Core.PlatformType.WeiXin;
+                platformType = MZcms.Core.PlatformType.WeiXin;
             }
             return platformType;
         }
@@ -171,12 +171,12 @@ namespace MZcms.Web.Framework
             string str;
             bool flag = true;
             IMobileOAuth weixinOAuth = null;
-            if (GetRequestType(filterContext.HttpContext.Request) == Himall.Core.PlatformType.WeiXin)//如果是微信登录
+            if (GetRequestType(filterContext.HttpContext.Request) == MZcms.Core.PlatformType.WeiXin)//如果是微信登录
             {
                 weixinOAuth = new WeixinOAuth();
             }
             string str1 = string.Format("/m-{0}/Login/Entrance?returnUrl={1}", base.PlatformType.ToString(), HttpUtility.UrlEncode(filterContext.HttpContext.Request.Url.ToString()));
-            if (weixinOAuth == null || GetRequestType(filterContext.HttpContext.Request) != Himall.Core.PlatformType.WeiXin)//如果不是微信登录
+            if (weixinOAuth == null || GetRequestType(filterContext.HttpContext.Request) != MZcms.Core.PlatformType.WeiXin)//如果不是微信登录
             {
                 filterContext.Result = Redirect(str1);
             }
@@ -219,7 +219,7 @@ namespace MZcms.Web.Framework
                     if (appIdTypeEnum == MemberOpenIdInfo.AppIdTypeEnum.Payment)
                     {
                         string str2 = SecureHelper.AESEncrypt(userInfo.OpenId, "Mobile");
-                        WebHelper.SetCookie("Himall-User_OpenId", str2);
+                        WebHelper.SetCookie("MZcms-User_OpenId", str2);
                     }
                     UserMemberInfo memberByUnionId = null;
                     if (memberByUnionId == null)
@@ -252,11 +252,11 @@ namespace MZcms.Web.Framework
 
                     if (memberByUnionId == null)
                     {
-                        object[] objArray = new object[] { base.PlatformType.ToString(), userInfo.OpenId, "Himall.Plugin.OAuth.WeiXin", HttpUtility.UrlEncode(userInfo.NickName), HttpUtility.UrlEncode(userInfo.RealName), HttpUtility.UrlEncode(userInfo.Headimgurl), HttpUtility.UrlEncode(filterContext.HttpContext.Request.Url.ToString()), appIdTypeEnum, userInfo.UnionId };
+                        object[] objArray = new object[] { base.PlatformType.ToString(), userInfo.OpenId, "MZcms.Plugin.OAuth.WeiXin", HttpUtility.UrlEncode(userInfo.NickName), HttpUtility.UrlEncode(userInfo.RealName), HttpUtility.UrlEncode(userInfo.Headimgurl), HttpUtility.UrlEncode(filterContext.HttpContext.Request.Url.ToString()), appIdTypeEnum, userInfo.UnionId };
                         str1 = string.Format("/m-{0}/Login/Entrance?openId={1}&serviceProvider={2}&nickName={3}&realName={4}&headimgurl={5}&returnUrl={6}&AppidType={7}&unionid={8}", objArray);
 
                         //因为手机上链接自动小写 暂存进session
-                        Session["serviceProvider"] = "Himall.Plugin.OAuth.WeiXin";
+                        Session["serviceProvider"] = "MZcms.Plugin.OAuth.WeiXin";
                         Session["nickName"] = HttpUtility.UrlEncode(userInfo.NickName);
                         Session["headimgurl"] = HttpUtility.UrlEncode(userInfo.Headimgurl);
                         Session["openId"] = userInfo.OpenId;
@@ -289,7 +289,7 @@ namespace MZcms.Web.Framework
                         //}
 
                         string str3 = UserCookieEncryptHelper.Encrypt(memberByUnionId.Id, "Mobile");
-                        WebHelper.SetCookie("Himall-User", str3);
+                        WebHelper.SetCookie("MZcms-User", str3);
                     }
                 }
             }

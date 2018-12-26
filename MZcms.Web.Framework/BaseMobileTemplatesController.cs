@@ -1,4 +1,4 @@
-using Himall.Core;
+using MZcms.Core;
 using System;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -17,7 +17,7 @@ namespace MZcms.Web.Framework
 			if (result != null)
 			{
 				string str = "Default";
-				if (base.PlatformType == Himall.Core.PlatformType.IOS || base.PlatformType == Himall.Core.PlatformType.Android)
+				if (base.PlatformType == MZcms.Core.PlatformType.IOS || base.PlatformType == MZcms.Core.PlatformType.Android)
 				{
 					str = "APP";
 				}

@@ -4,23 +4,23 @@ namespace MZcms.Web.Framework
 {
 	public class CookieKeysCollection
 	{
-		public const string PLATFORM_MANAGER = "Himall-PlatformManager";
+		public const string PLATFORM_MANAGER = "MZcms-PlatformManager";
 
-		public const string SELLER_MANAGER = "Himall-SellerManager";
+		public const string SELLER_MANAGER = "MZcms-SellerManager";
 
-		public const string HIMALL_USER = "Himall-User";
+		public const string MZcms_USER = "MZcms-User";
 
-		public const string HIMALL_USER_OpenID = "Himall-User_OpenId";
+		public const string MZcms_USER_OpenID = "MZcms-User_OpenId";
 
-		public const string HIMALL_CART = "HIMALL-CART";
+		public const string MZcms_CART = "MZcms-CART";
 
-		public const string HIMALL_PRODUCT_BROWSING_HISTORY = "Himall_ProductBrowsingHistory";
+		public const string MZcms_PRODUCT_BROWSING_HISTORY = "MZcms_ProductBrowsingHistory";
 
-		public const string HIMALL_LASTOPERATETIME = "Himall_LastOpTime";
+		public const string MZcms_LASTOPERATETIME = "MZcms_LastOpTime";
 
-		public const string MobileAppType = "Himall-Mobile-AppType";
+		public const string MobileAppType = "MZcms-Mobile-AppType";
 
-		public const string HIMALL_VSHOPID = "Himall-VShopId";
+		public const string MZcms_VSHOPID = "MZcms-VShopId";
 
         /// <summary>
         /// ÓÃ»§½ÇÉ«(Admin)
