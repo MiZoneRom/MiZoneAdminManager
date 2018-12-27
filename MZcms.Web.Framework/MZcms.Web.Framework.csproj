@@ -108,6 +108,10 @@
       <Project>{dbbdf587-18a1-4723-863d-eb0f2be230ba}</Project>
       <Name>MZcms.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MZcms.ServiceProvider\MZcms.ServiceProvider.csproj">
+      <Project>{4e977246-309d-4be4-95f3-09b4be0af853}</Project>
+      <Name>MZcms.ServiceProvider</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
