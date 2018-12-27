@@ -40,6 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AOPProxyException.cs" />
+    <Compile Include="AopProxy_T_.cs" />
+    <Compile Include="DelegateContainer.cs" />
+    <Compile Include="FlowBehavior.cs" />
+    <Compile Include="IAOPInterception.cs" />
+    <Compile Include="Interception.cs" />
+    <Compile Include="InterceptionInit.cs" />
+    <Compile Include="InterceptionType.cs" />
+    <Compile Include="MethodParameters.cs" />
+    <Compile Include="OnEntry.cs" />
+    <Compile Include="OnException.cs" />
+    <Compile Include="OnExit.cs" />
+    <Compile Include="OnLogException.cs" />
+    <Compile Include="OnSuccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
