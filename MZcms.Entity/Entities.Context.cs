@@ -29,5 +29,6 @@ namespace MZcms.Entity
         public virtual DbSet<RolePrivileges> RolePrivileges { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Logs> Logs { get; set; }
+        public virtual DbSet<Members> Members { get; set; }
     }
 }

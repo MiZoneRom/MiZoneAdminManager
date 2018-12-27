@@ -70,6 +70,9 @@
     <Compile Include="Managers.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Members.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolePrivileges.cs">
       <DependentUpon>Entities.tt</DependentUpon>

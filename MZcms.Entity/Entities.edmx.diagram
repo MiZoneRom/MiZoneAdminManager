@@ -11,6 +11,7 @@
         <EntityTypeShape EntityType="MZcms.Entities.Logs" Width="1.5" PointX="5.875" PointY="1.125" />
         <AssociationConnector Association="MZcms.Entities.FK_Managers_Roles" />
         <AssociationConnector Association="MZcms.Entities.FK_RolePrivileges_Roles" />
+        <EntityTypeShape EntityType="MZcms.Entities.Members" Width="1.5" PointX="5.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
