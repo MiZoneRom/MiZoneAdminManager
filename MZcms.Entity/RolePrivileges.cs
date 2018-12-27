@@ -17,5 +17,7 @@ namespace MZcms.Entity
         public long Id { get; set; }
         public Nullable<int> Privilege { get; set; }
         public Nullable<long> RoleId { get; set; }
+    
+        public virtual Roles Roles { get; set; }
     }
 }

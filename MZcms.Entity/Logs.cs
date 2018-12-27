@@ -12,20 +12,13 @@ namespace MZcms.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class Roles
+    public partial class Logs
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Roles()
-        {
-            this.Managers = new HashSet<Managers>();
-        }
-    
         public long Id { get; set; }
-        public string RoleName { get; set; }
+        public string PageUrl { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public string UserName { get; set; }
+        public string IPAddress { get; set; }
         public string Description { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Managers> Managers { get; set; }
-        public virtual RolePrivileges RolePrivileges { get; set; }
     }
 }

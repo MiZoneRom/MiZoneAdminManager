@@ -64,6 +64,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Entities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Logs.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Managers.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>

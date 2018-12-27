@@ -5,9 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="96cd4ee23d524828907628c636d4ab3b" Name="Diagram1">
-        <EntityTypeShape EntityType="MZcms.Entities.Managers" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MZcms.Entities.RolePrivileges" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MZcms.Entities.Roles" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MZcms.Entities.Managers" Width="1.5" PointX="2.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MZcms.Entities.RolePrivileges" Width="1.5" PointX="2.875" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MZcms.Entities.Roles" Width="1.5" PointX="0.5" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MZcms.Entities.Logs" Width="1.5" PointX="5.875" PointY="1.125" />
+        <AssociationConnector Association="MZcms.Entities.FK_Managers_Roles" />
+        <AssociationConnector Association="MZcms.Entities.FK_RolePrivileges_Roles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
