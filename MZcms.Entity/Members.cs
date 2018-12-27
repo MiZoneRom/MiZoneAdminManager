@@ -25,7 +25,7 @@ namespace MZcms.Entity
         public string CellPhone { get; set; }
         public string QQ { get; set; }
         public string Address { get; set; }
-        public Nullable<byte> Disabled { get; set; }
+        public Nullable<bool> Disabled { get; set; }
         public Nullable<System.DateTime> LastLoginDate { get; set; }
         public Nullable<int> Points { get; set; }
         public string Photo { get; set; }

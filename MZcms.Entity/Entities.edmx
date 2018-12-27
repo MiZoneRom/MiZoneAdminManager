@@ -208,7 +208,7 @@
           <Property Name="CellPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="QQ" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Disabled" Type="Byte" />
+          <Property Name="Disabled" Type="Boolean" />
           <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
           <Property Name="Points" Type="Int32" />
           <Property Name="Photo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
