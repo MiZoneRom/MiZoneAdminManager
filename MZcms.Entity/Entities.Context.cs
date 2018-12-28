@@ -12,6 +12,7 @@ namespace MZcms.Entity
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using MZcms.Model;
     
     public partial class Entities : DbContext
     {

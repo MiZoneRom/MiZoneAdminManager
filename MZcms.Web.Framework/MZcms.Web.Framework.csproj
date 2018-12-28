@@ -112,6 +112,10 @@
       <Project>{7a412f46-b2b1-42f4-ab5e-3ea03f9ba194}</Project>
       <Name>MZcms.Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MZcms.CommonModel\MZcms.CommonModel.csproj">
+      <Project>{03440b05-bf8b-4b13-8f54-1ad1c819a91f}</Project>
+      <Name>MZcms.CommonModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MZcms.Core\MZcms.Core.csproj">
       <Project>{720ff9a7-86ed-4d2a-8bb2-e9f958d59bf7}</Project>
       <Name>MZcms.Core</Name>

@@ -50,7 +50,7 @@ namespace MZcms.Service
 
                 if (entities == null)
                 {
-                    entities = new Entities();
+                    entities = new MyEntities();
                     CallContext.SetData(name, entities);
                 }
                 return entities;
@@ -70,7 +70,7 @@ namespace MZcms.Service
 
                 if (entities == null)
                 {
-                    entities = new Entities();
+                    entities = new MyEntities();
                     entities.Configuration.LazyLoadingEnabled = false;
                     entities.Configuration.ProxyCreationEnabled = false;
                     CallContext.SetData(name, entities);
