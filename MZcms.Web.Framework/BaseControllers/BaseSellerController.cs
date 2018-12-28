@@ -13,15 +13,14 @@ namespace MZcms.Web.Framework
     public abstract class BaseSellerController : BaseWebController
     {
         #region 字段
-        private SiteSettingsInfo _sitesetting = null;
-        private ShopInfo _shopInfo;
+        private SiteSettings _sitesetting = null;
         #endregion
 
         #region 属性
         /// <summary>
         /// 当前站点配置
         /// </summary>
-        public new SiteSettingsInfo CurrentSiteSetting
+        public new SiteSettings CurrentSiteSetting
         {
             get
             {
@@ -38,15 +37,6 @@ namespace MZcms.Web.Framework
             }
         }
 
-        public ShopInfo CurrentShop
-        {
-            get
-            {
-                if (_shopInfo == null)
-                    _shopInfo = ShopApplication.GetShop(this.CurrentSellerManager.ShopId, true);
-                return _shopInfo;
-            }
-        }
         #endregion
 
 
@@ -65,7 +55,7 @@ namespace MZcms.Web.Framework
             base.OnAuthorization(filterContext);
 
             //检查登录状态    //检查授权情况    //跳转到第几部//检查当前商家注册情况 //检查店铺是否过期
-            if (CheckLoginStatus(filterContext) && CheckAuthorization(filterContext) && CheckRegisterInfo(filterContext) && CheckShopIsExpired(filterContext))
+            if (CheckLoginStatus(filterContext) && CheckAuthorization(filterContext))
                 return;
         }
 
@@ -152,104 +142,5 @@ namespace MZcms.Web.Framework
             return flag;
         }
 
-        bool CheckShopIsExpired(AuthorizationContext filterContext)
-        {
-            var flag = true;
-
-            string controllerName = filterContext.RouteData.Values["controller"].ToString().ToLower();
-            string actionName = filterContext.RouteData.Values["action"].ToString().ToLower();
-            string areaName = filterContext.RouteData.DataTokens["area"].ToString().ToLower();
-
-            if (ShopApplication.IsExpiredShop(CurrentSellerManager.ShopId))
-            {
-
-                if (controllerName == "shop" && areaName == "selleradmin")
-                    return true;
-
-                var result = new ViewResult()
-                {
-                    ViewName = "IsExpired"
-                };
-                result.TempData.Add("Message", "你的店铺已过期;");
-                result.TempData.Add("Title", "你的店铺已过期！");
-                filterContext.Result = result;
-                flag = false;
-            }
-            if (ShopApplication.IsFreezeShop(CurrentSellerManager.ShopId))
-            {
-                var result = new ViewResult()
-                {
-                    ViewName = "IsFreeze"
-                };
-                result.TempData.Add("Message", "抱歉，你的店铺已冻结，请与平台管理员联系…");
-                result.TempData.Add("Title", "你的店铺已冻结！");
-                filterContext.Result = result;
-                flag = false;
-            }
-
-            bool lowPrem = false;
-            long gradeId = ShopApplication.GetShop(this.CurrentSellerManager.ShopId, true).GradeId;
-            if (gradeId == 1)
-            {
-                if (controllerName.ToLower() == "product" && actionName.ToLower() == "create")
-                {
-                    lowPrem = true;
-                }
-                if (controllerName.ToLower() == "productimport" && actionName.ToLower() == "importmanage")
-                {
-                    lowPrem = true;
-                }
-                if (controllerName.ToLower() == "productimport" && actionName.ToLower() == "otherimportmanage")
-                {
-                    lowPrem = true;
-                }
-            }
-
-            if (lowPrem) {
-                var result = new ViewResult()
-                {
-                    ViewName = "IsFreeze"
-                };
-                result.TempData.Add("Message", "抱歉，你的店铺等级过低");
-                result.TempData.Add("Title", "你的店铺等级过低！");
-                filterContext.Result = result;
-                flag = false;
-            }
-
-            return flag;
-        }
-
-        /// <summary>
-        /// 检查当前商家注册情况
-        /// </summary>
-        /// <param name="filterContext"></param>
-        bool CheckRegisterInfo(AuthorizationContext filterContext)
-        {
-            var flag = true;
-            if (filterContext.IsChildAction || Core.Helper.WebHelper.IsAjax())
-                return flag;
-            string controllerName = filterContext.RouteData.Values["controller"].ToString().ToLower();
-            string actionName = filterContext.RouteData.Values["action"].ToString().ToLower();
-            string areaName = filterContext.RouteData.DataTokens["area"].ToString().ToLower();
-            var shop = ShopApplication.GetShop(CurrentSellerManager.ShopId);
-            int stage = (int)shop.Stage;
-            if ((shop.Stage != ShopInfo.ShopStage.Finish || shop.ShopStatus == ShopInfo.ShopAuditStatus.WaitConfirm) && filterContext.RequestContext.HttpContext.Request.HttpMethod.ToUpper() != "POST")
-            {
-                if (actionName.IndexOf("step") != 0)
-                {
-                    //如果当前action是已经是对应的值则不要跳转，否则将进入死循环
-                    if (actionName != ("EditProfile" + stage).ToLower())
-                    {
-                        var result = RedirectToAction("EditProfile" + stage, "ShopProfile", new
-                        {
-                            area = "SellerAdmin"
-                        });
-                        filterContext.Result = result;
-                        flag = false;
-                    }
-                }
-            }
-            return flag;
-        }
     }
 }
