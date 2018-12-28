@@ -1,4 +1,5 @@
 using MZcms.Core.Helper;
+using MZcms.Entity;
 using MZcms.IServices;
 using MZcms.Model;
 using MZcms.ServiceProvider;
@@ -63,7 +64,7 @@ namespace MZcms.Web.Framework
 					stringBuilder.AppendFormat("{0}:{1} ", keyValuePair.Key, keyValuePair.Value);
 				}
 			}
-			LogInfo logInfo = new LogInfo()
+			Logs logInfo = new Logs()
 			{
 				Date = DateTime.Now,
 				IPAddress = WebHelper.GetIP(),
@@ -72,7 +73,7 @@ namespace MZcms.Web.Framework
 				Description = stringBuilder.ToString(),
 				ShopId = (filterContext.Controller as BaseSellerController).CurrentSellerManager.ShopId
 			};
-			LogInfo logInfo1 = logInfo;
+            Logs logInfo1 = logInfo;
 			Task.Factory.StartNew(() => Instance<IOperationLogService>.Create.AddSellerOperationLog(logInfo1));
 		}
 	}

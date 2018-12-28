@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using MZcms.Entity;
 
 namespace MZcms.Web.Framework
 {
@@ -28,13 +29,13 @@ namespace MZcms.Web.Framework
             set;
         }
 
-        //public SiteSettingsInfo CurrentSiteSetting
-        //{
-        //    get
-        //    {
-        //        return ServiceHelper.Create<ISiteSettingService>().GetSiteSettings();
-        //    }
-        //}
+        public SiteSettings CurrentSiteSetting
+        {
+            get
+            {
+                return ServiceHelper.Create<ISiteSettingService>().GetSiteSettings();
+            }
+        }
 
         protected bool isCanClearLoginStatus
         {
@@ -90,14 +91,9 @@ namespace MZcms.Web.Framework
 
         public BaseController()
         {
-            //if (!IsInstalled())
-            //{
-            //    base.RedirectToAction("/Web/Installer/Agreement");
-            //    return;
-            //}
-            //((dynamic)base.ViewBag).SEODescription = CurrentSiteSetting.Site_SEODescription;
-            //((dynamic)base.ViewBag).SEOKeyword = CurrentSiteSetting.Site_SEOKeywords;
-            //((dynamic)base.ViewBag).FlowScript = CurrentSiteSetting.FlowScript;
+            ((dynamic)base.ViewBag).SEODescription = CurrentSiteSetting.Site_SEODescription;
+            ((dynamic)base.ViewBag).SEOKeyword = CurrentSiteSetting.Site_SEOKeywords;
+            ((dynamic)base.ViewBag).FlowScript = CurrentSiteSetting.FlowScript;
         }
 
         private void ClearLoginCookie()
