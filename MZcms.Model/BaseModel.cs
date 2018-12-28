@@ -7,12 +7,6 @@ namespace MZcms.Model
 	{
 		protected string ImageServerUrl = "";
 
-		public object Id
-		{
-			get;
-			set;
-		}
-
 		protected BaseModel()
 		{
 		}

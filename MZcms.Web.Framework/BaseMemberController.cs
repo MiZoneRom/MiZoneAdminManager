@@ -65,10 +65,6 @@ namespace MZcms.Web.Framework
 				HttpRequestBase request = filterContext.HttpContext.Request;
 				string str = HttpUtility.HtmlEncode(request.RawUrl.ToString());
 				RedirectToRouteResult action = base.RedirectToAction("", "Login", new { area = "Web", returnUrl = str });
-				if (base.CurrentSellerManager != null && !base.IsMobileTerminal)
-				{
-					action = base.RedirectToAction("index", "Home", new { area = "SellerAdmin" });
-				}
 				if (!base.IsMobileTerminal)
 				{
 					filterContext.Result = action;

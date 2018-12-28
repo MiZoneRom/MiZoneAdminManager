@@ -42,31 +42,6 @@ namespace MZcms.Web.Framework
             }
             else
             {
-                WXShopInfo wXShopInfo = new WXShopInfo();
-                string item = filterContext.HttpContext.Request["shop"];
-                MemberOpenIds.AppIdTypeEnum appIdTypeEnum = MemberOpenIdInfo.AppIdTypeEnum.Normal;
-
-                if (!string.IsNullOrEmpty(item))
-                {
-                    long num = 0;
-                    long.TryParse(item, out num);
-                    if (num > 0)
-                    {
-                        wXShopInfo = ServiceHelper.Create<IVShopService>().GetVShopSetting(num);
-                    }
-                }
-
-                if (string.IsNullOrEmpty(wXShopInfo.AppId) || string.IsNullOrEmpty(wXShopInfo.AppSecret))
-                {
-                    WXShopInfo wXShopInfo1 = new WXShopInfo()
-                    {
-                        AppId = base.CurrentSiteSetting.WeixinAppId,
-                        AppSecret = base.CurrentSiteSetting.WeixinAppSecret,
-                        Token = base.CurrentSiteSetting.WeixinToken
-                    };
-                    wXShopInfo = wXShopInfo1;
-                    appIdTypeEnum = MemberOpenIdInfo.AppIdTypeEnum.Payment;
-                }
 
                 MobileOAuthUserInfo userInfoBequiet = weixinOAuth.GetUserInfo_bequiet(filterContext, out str, wXShopInfo);
 
