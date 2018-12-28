@@ -41,8 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMemberService.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MZcms.Entity\MZcms.Entity.csproj">
+      <Project>{94b8f2ae-cfcd-450f-84f6-835743b2bb02}</Project>
+      <Name>MZcms.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MZcms.Model\MZcms.Model.csproj">
+      <Project>{dbbdf587-18a1-4723-863d-eb0f2be230ba}</Project>
+      <Name>MZcms.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

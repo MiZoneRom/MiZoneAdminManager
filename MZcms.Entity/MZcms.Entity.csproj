@@ -70,6 +70,9 @@
     <Compile Include="Managers.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="MemberOpenIds.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Members.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>

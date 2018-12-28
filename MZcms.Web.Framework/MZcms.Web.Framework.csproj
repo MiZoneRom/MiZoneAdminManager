@@ -94,7 +94,7 @@
     <Compile Include="EnumVisitorOperaSystem.cs" />
     <Compile Include="EnumVisitorTerminal.cs" />
     <Compile Include="GZipAttribute.cs" />
-    <Compile Include="HiAPIController.cs" />
+    <Compile Include="MzAPIController.cs" />
     <Compile Include="IMobileOAuth.cs" />
     <Compile Include="JumpUrlRoute.cs" />
     <Compile Include="MobileOAuthUserInfo.cs" />
@@ -117,6 +117,10 @@
     <ProjectReference Include="..\MZcms.Core\MZcms.Core.csproj">
       <Project>{0dd5872a-886c-49d6-a1c4-2f70e8fdc413}</Project>
       <Name>MZcms.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MZcms.Entity\MZcms.Entity.csproj">
+      <Project>{94b8f2ae-cfcd-450f-84f6-835743b2bb02}</Project>
+      <Name>MZcms.Entity</Name>
     </ProjectReference>
     <ProjectReference Include="..\MZcms.IServices\MZcms.IServices.csproj">
       <Project>{5d2899b8-d510-4d0b-b239-a01b2ad28f06}</Project>

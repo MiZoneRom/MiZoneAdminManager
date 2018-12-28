@@ -1,5 +1,6 @@
 using MZcms.Core;
 using MZcms.Core.Helper;
+using MZcms.Entity;
 using MZcms.IServices;
 using MZcms.Model;
 using System;
@@ -43,7 +44,7 @@ namespace MZcms.Web.Framework
             {
                 WXShopInfo wXShopInfo = new WXShopInfo();
                 string item = filterContext.HttpContext.Request["shop"];
-                MemberOpenIdInfo.AppIdTypeEnum appIdTypeEnum = MemberOpenIdInfo.AppIdTypeEnum.Normal;
+                MemberOpenIds.AppIdTypeEnum appIdTypeEnum = MemberOpenIdInfo.AppIdTypeEnum.Normal;
 
                 if (!string.IsNullOrEmpty(item))
                 {

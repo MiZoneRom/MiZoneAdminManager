@@ -29,22 +29,34 @@
           <Property Name="Remark" Type="nvarchar" MaxLength="200" />
           <Property Name="RealName" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="MemberOpenIds">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="OpenId" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UnionOpenId" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UnionId" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ServiceProvider" Type="nvarchar" MaxLength="100" />
+          <Property Name="AppIdType" Type="int" />
+        </EntityType>
         <EntityType Name="Members">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Password" Type="nvarchar" MaxLength="100" />
-          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="100" />
-          <Property Name="Nick" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Nick" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" />
-          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="RealName" Type="nvarchar" MaxLength="100" />
           <Property Name="CellPhone" Type="nvarchar" MaxLength="100" />
           <Property Name="QQ" Type="nvarchar" MaxLength="100" />
           <Property Name="Address" Type="nvarchar" MaxLength="100" />
-          <Property Name="Disabled" Type="tinyint" />
+          <Property Name="Disabled" Type="bit" Nullable="false" />
           <Property Name="LastLoginDate" Type="datetime" />
           <Property Name="Points" Type="int" />
           <Property Name="Photo" Type="nvarchar" MaxLength="100" />
@@ -79,6 +91,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MemberOpenIds_Members">
+          <End Role="Members" Type="Self.Members" Multiplicity="0..1" />
+          <End Role="MemberOpenIds" Type="Self.MemberOpenIds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MemberOpenIds">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RolePrivileges_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="RolePrivileges" Type="Self.RolePrivileges" Multiplicity="0..1" />
@@ -94,12 +118,17 @@
         <EntityContainer Name="MZcmsEntitiesStoreContainer">
           <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Managers" EntityType="Self.Managers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MemberOpenIds" EntityType="Self.MemberOpenIds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RolePrivileges" EntityType="Self.RolePrivileges" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Managers_Roles" Association="Self.FK_Managers_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Managers" EntitySet="Managers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberOpenIds_Members" Association="Self.FK_MemberOpenIds_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="MemberOpenIds" EntitySet="MemberOpenIds" />
           </AssociationSet>
           <AssociationSet Name="FK_RolePrivileges_Roles" Association="Self.FK_RolePrivileges_Roles">
             <End Role="Roles" EntitySet="Roles" />
@@ -157,6 +186,11 @@
             <End Role="RolePrivileges" EntitySet="RolePrivileges" />
           </AssociationSet>
           <EntitySet Name="Members" EntityType="MZcms.Entities.Members" />
+          <EntitySet Name="MemberOpenIds" EntityType="MZcms.Entities.MemberOpenIds" />
+          <AssociationSet Name="FK_MemberOpenIds_Members" Association="MZcms.Entities.FK_MemberOpenIds_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="MemberOpenIds" EntitySet="MemberOpenIds" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Logs">
           <Key>
@@ -198,23 +232,49 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="PasswordSalt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Nick" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nick" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="RealName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CellPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="QQ" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Disabled" Type="Boolean" />
+          <Property Name="Disabled" Type="Boolean" Nullable="false" />
           <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
           <Property Name="Points" Type="Int32" />
           <Property Name="Photo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsMale" Type="Byte" />
+          <NavigationProperty Name="MemberOpenIds" Relationship="MZcms.Entities.FK_MemberOpenIds_Members" FromRole="Members" ToRole="MemberOpenIds" />
         </EntityType>
+        <EntityType Name="MemberOpenIds">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="OpenId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UnionOpenId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UnionId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceProvider" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AppIdType" Type="Int32" />
+          <NavigationProperty Name="Members" Relationship="MZcms.Entities.FK_MemberOpenIds_Members" FromRole="MemberOpenIds" ToRole="Members" />
+        </EntityType>
+        <Association Name="FK_MemberOpenIds_Members">
+          <End Type="MZcms.Entities.Members" Role="Members" Multiplicity="0..1" />
+          <End Type="MZcms.Entities.MemberOpenIds" Role="MemberOpenIds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MemberOpenIds">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -284,6 +344,19 @@
                 <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MemberOpenIds">
+            <EntityTypeMapping TypeName="MZcms.Entities.MemberOpenIds">
+              <MappingFragment StoreEntitySet="MemberOpenIds">
+                <ScalarProperty Name="AppIdType" ColumnName="AppIdType" />
+                <ScalarProperty Name="ServiceProvider" ColumnName="ServiceProvider" />
+                <ScalarProperty Name="UnionId" ColumnName="UnionId" />
+                <ScalarProperty Name="UnionOpenId" ColumnName="UnionOpenId" />
+                <ScalarProperty Name="OpenId" ColumnName="OpenId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

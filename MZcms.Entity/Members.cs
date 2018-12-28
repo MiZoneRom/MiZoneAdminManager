@@ -14,22 +14,31 @@ namespace MZcms.Entity
     
     public partial class Members
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Members()
+        {
+            this.MemberOpenIds = new HashSet<MemberOpenIds>();
+        }
+    
         public long Id { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public string PasswordSalt { get; set; }
         public string Nick { get; set; }
         public string Email { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
+        public System.DateTime CreateDate { get; set; }
         public string RealName { get; set; }
         public string CellPhone { get; set; }
         public string QQ { get; set; }
         public string Address { get; set; }
-        public Nullable<bool> Disabled { get; set; }
+        public bool Disabled { get; set; }
         public Nullable<System.DateTime> LastLoginDate { get; set; }
         public Nullable<int> Points { get; set; }
         public string Photo { get; set; }
         public string Remark { get; set; }
         public Nullable<byte> IsMale { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MemberOpenIds> MemberOpenIds { get; set; }
     }
 }

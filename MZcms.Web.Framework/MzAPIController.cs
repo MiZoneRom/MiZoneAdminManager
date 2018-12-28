@@ -5,7 +5,7 @@ using System.Web.Http.Results;
 namespace MZcms.Web.Framework
 {
     [ApiExceptionFilter]
-    public abstract class HiAPIController<TUser> : ApiController
+    public abstract class MzAPIController<TUser> : ApiController
     {
         #region 字段
         private TUser _user;
