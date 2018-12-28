@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using Himall.IServices;
+using MZcms.IServices;
 using AutoMapper;
-using Himall.Core;
-using Himall.DTO;
-using Himall.Core.Plugins.Message;
-using Himall.Model;
+using MZcms.Core;
+using MZcms.DTO;
+using MZcms.Core.Plugins.Message;
+using MZcms.Model;
 
-namespace Himall.Application
+namespace MZcms.Application
 {
     public class SiteSettingApplication
     {
@@ -18,7 +18,7 @@ namespace Himall.Application
         /// 获取系统配置信息
         /// </summary>
         /// <returns></returns>
-        public static  SiteSettingsInfo GetSiteSettings()
+        public static  SiteSettings GetSiteSettings()
         {
             return _iSiteSettingService.GetSiteSettings();
         }
@@ -27,7 +27,7 @@ namespace Himall.Application
         /// 保存系统配置信息
         /// </summary>
         /// <param name="siteSettingsInfo">待保存的系统配置（该配置必须是完整的配置）</param>
-        public static void SetSiteSettings(SiteSettingsInfo siteSettingsInfo)
+        public static void SetSiteSettings(SiteSettings siteSettingsInfo)
         {
             _iSiteSettingService.SetSiteSettings(siteSettingsInfo);
         }
