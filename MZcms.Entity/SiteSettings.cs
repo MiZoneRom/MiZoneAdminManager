@@ -11,8 +11,8 @@ namespace MZcms.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class SiteSettings
+    using MZcms.Model;
+    public partial class SiteSettings : BaseModel
     {
         public long Id { get; set; }
         public string Key { get; set; }

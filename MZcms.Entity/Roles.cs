@@ -11,8 +11,8 @@ namespace MZcms.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Roles
+    using MZcms.Model;
+    public partial class Roles : BaseModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Roles()

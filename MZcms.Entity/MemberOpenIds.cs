@@ -11,8 +11,8 @@ namespace MZcms.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class MemberOpenIds
+    using MZcms.Model;
+    public partial class MemberOpenIds : BaseModel
     {
         public long Id { get; set; }
         public Nullable<long> UserId { get; set; }

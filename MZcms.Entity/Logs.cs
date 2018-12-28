@@ -11,8 +11,8 @@ namespace MZcms.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Logs
+    using MZcms.Model;
+    public partial class Logs : BaseModel
     {
         public long Id { get; set; }
         public string PageUrl { get; set; }

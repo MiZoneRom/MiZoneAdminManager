@@ -11,8 +11,8 @@ namespace MZcms.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Managers
+    using MZcms.Model;
+    public partial class Managers : BaseModel
     {
         public long Id { get; set; }
         public Nullable<long> RoleId { get; set; }

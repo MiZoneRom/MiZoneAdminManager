@@ -11,8 +11,8 @@ namespace MZcms.Entity
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class RolePrivileges
+    using MZcms.Model;
+    public partial class RolePrivileges : BaseModel
     {
         public long Id { get; set; }
         public Nullable<int> Privilege { get; set; }
