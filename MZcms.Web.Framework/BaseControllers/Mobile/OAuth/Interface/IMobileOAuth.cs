@@ -13,8 +13,8 @@ namespace MZcms.Web.Framework
         /// <returns></returns>
         MobileOAuthUserInfo GetUserInfo(ActionExecutingContext filterContext, out string redirectUrl);
 
-        MobileOAuthUserInfo GetUserInfo(ActionExecutingContext filterContext, out string redirectUrl, Model.WXShopInfo settings);
+        //MobileOAuthUserInfo GetUserInfo(ActionExecutingContext filterContext, out string redirectUrl, Model.WXShopInfo settings);
 
-        MobileOAuthUserInfo GetUserInfo_bequiet(ActionExecutingContext filterContext, out string redirectUrl, Model.WXShopInfo settings);
+        //MobileOAuthUserInfo GetUserInfo_bequiet(ActionExecutingContext filterContext, out string redirectUrl, Model.WXShopInfo settings);
     }
 }

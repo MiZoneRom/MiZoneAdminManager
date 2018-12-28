@@ -16,7 +16,6 @@ namespace MZcms.Web.Framework
     public abstract class BaseMobileController : BaseController
     {
         private static Dictionary<string, string> platformTypesStringMap;
-        ISellerManager sellerManager = null;
 
         public BaseMobileController()
         {
@@ -38,28 +37,6 @@ namespace MZcms.Web.Framework
                 if (CurrentUser == null)
                     return 0;
                 return CurrentUser.Id;
-            }
-        }
-        /// <summary>
-        /// 当前管理员
-        /// </summary>
-        public ISellerManager CurrentSellerManager
-        {
-            get
-            {
-                if (sellerManager != null)
-                {
-                    return sellerManager;
-                }
-                else
-                {
-                    long userId = UserCookieEncryptHelper.Decrypt(WebHelper.GetCookie(CookieKeysCollection.SELLER_MANAGER), CookieKeysCollection.USERROLE_SELLERADMIN);
-                    if (userId != 0)
-                    {
-                        sellerManager = ManagerApplication.GetSellerManager(userId);
-                    }
-                }
-                return sellerManager;
             }
         }
 

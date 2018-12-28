@@ -82,8 +82,8 @@
     <Compile Include="BaseControllers\Web\BaseMemberController.cs" />
     <Compile Include="BaseControllers\Web\BaseWebController.cs" />
     <Compile Include="Base\ApiErrorCode.cs" />
-    <Compile Include="Base\Himall404.cs" />
-    <Compile Include="Base\HimallApiException.cs" />
+    <Compile Include="Base\MZcms404.cs" />
+    <Compile Include="Base\MZcmsApiException.cs" />
     <Compile Include="CookieKeysCollection.cs" />
     <Compile Include="ExcelResult.cs" />
     <Compile Include="Helper\ApiHelper.cs" />
