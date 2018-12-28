@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ActionItem.cs" />
     <Compile Include="AdminPrivilege.cs" />
+    <Compile Include="BaseModel.cs" />
     <Compile Include="Controllers.cs" />
     <Compile Include="GroupActionItem.cs" />
     <Compile Include="PrivilegeAttribute.cs" />

@@ -57,7 +57,7 @@ namespace MZcms.Service
 			{
 				throw new ApplicationException(string.Concat("未找到", key, "对应的配置项"));
 			}
-			SiteSettings SiteSettings = context.SiteSettings.Where((SiteSettings item) => item.Key == key).FirstOrDefault();
+			SiteSettings SiteSettings = context.SiteSettings.FindBy((SiteSettings item) => item.Key == key).FirstOrDefault();
 			if (SiteSettings == null)
 			{
 				SiteSettings = new SiteSettings();
