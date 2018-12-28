@@ -11,7 +11,7 @@
       <name>orderJob</name>
       <group>orderGroup</group>
       <description>Order job for Quartz Server</description>
-      <job-type>Himall.Service.Job.OrderJob, Himall.Service</job-type>
+      <job-type>MZcms.Service.Job.OrderJob, MZcms.Service</job-type>
       <durable>true</durable>
       <recover>false</recover>
     </job>
@@ -29,7 +29,7 @@
       <name>orderCommentsJob</name>
       <group>orderCommentsGroup</group>
       <description>order comments for Quartz Server</description>
-      <job-type>Himall.Service.Job.OrderCommentsJob, Himall.Service</job-type>
+      <job-type>MZcms.Service.Job.OrderCommentsJob, MZcms.Service</job-type>
       <durable>true</durable>
       <recover>false</recover>
     </job>
@@ -47,7 +47,7 @@
       <name>accountJob</name>
       <group>accountGroup</group>
       <description>account job for Quartz Server</description>
-      <job-type>Himall.Service.Job.AccountJob, Himall.Service</job-type>
+      <job-type>MZcms.Service.Job.AccountJob, MZcms.Service</job-type>
       <durable>true</durable>
       <recover>false</recover>
     </job>
