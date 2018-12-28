@@ -56,7 +56,7 @@ namespace MZcms.Web.Framework
                     logContent.AppendFormat("{0}:{1} ", kvp.Key, kvp.Value);
                 }
             }
-            var model = new MZcms.Model.LogInfo()
+            var model = new MZcms.Model.Logs()
             {
                 Date = DateTime.Now,
                 IPAddress = WebHelper.GetIP(),

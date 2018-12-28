@@ -43,10 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OperationLogApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteSettingApplication.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MZcms.CommonModel\MZcms.CommonModel.csproj">
+      <Project>{03440b05-bf8b-4b13-8f54-1ad1c819a91f}</Project>
+      <Name>MZcms.CommonModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MZcms.Core\MZcms.Core.csproj">
       <Project>{720FF9A7-86ED-4D2A-8BB2-E9F958D59BF7}</Project>
       <Name>MZcms.Core</Name>

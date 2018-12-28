@@ -42,6 +42,14 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryModel\OperationLogQuery.cs" />
+    <Compile Include="QueryModel\QueryBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MZcms.Model\MZcms.Model.csproj">
+      <Project>{2c6d0638-c5f6-432a-aca5-2710d243fe96}</Project>
+      <Name>MZcms.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

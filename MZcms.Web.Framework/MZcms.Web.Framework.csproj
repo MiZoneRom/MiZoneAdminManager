@@ -62,8 +62,6 @@
     <Compile Include="ActionSelectors\ApiExceptionFilterAttribute.cs" />
     <Compile Include="ActionSelectors\GzipAttribute.cs" />
     <Compile Include="ActionSelectors\OperationLogAttribute.cs" />
-    <Compile Include="ActionSelectors\ShopOperationLogAttribute.cs" />
-    <Compile Include="ActionSelectors\StoreAuthorizationAttribute.cs" />
     <Compile Include="ActionSelectors\UnAuthorizeAttribute.cs" />
     <Compile Include="ApiControllerSelector\NamespaceHttpControllerSelector.cs" />
     <Compile Include="AreaRegistrationOrder.cs" />

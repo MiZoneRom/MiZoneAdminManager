@@ -40,11 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISystem\IOperationLogService.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="ISystem\ISiteSettingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MZcms.CommonModel\MZcms.CommonModel.csproj">
+      <Project>{03440b05-bf8b-4b13-8f54-1ad1c819a91f}</Project>
+      <Name>MZcms.CommonModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MZcms.DTO\MZcms.DTO.csproj">
+      <Project>{dd95a3fd-691c-427a-9a88-e3ff44e5951e}</Project>
+      <Name>MZcms.DTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MZcms.Model\MZcms.Model.csproj">
       <Project>{2c6d0638-c5f6-432a-aca5-2710d243fe96}</Project>
       <Name>MZcms.Model</Name>
