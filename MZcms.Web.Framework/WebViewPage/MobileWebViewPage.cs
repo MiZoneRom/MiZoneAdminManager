@@ -9,7 +9,7 @@ namespace MZcms.Web.Framework
     /// <typeparam name="TModel"></typeparam>
     public abstract class MobileWebViewPage<TModel> : System.Web.Mvc.WebViewPage<TModel>
     {
-		public SiteSettingsInfo SiteSetting
+		public SiteSettings SiteSetting
 		{
 			get
 			{
@@ -22,7 +22,7 @@ namespace MZcms.Web.Framework
         /// <summary>
         /// 当前用户信息
         /// </summary>
-        public UserMemberInfo CurrentUser
+        public Members CurrentUser
         {
             get
 			{
