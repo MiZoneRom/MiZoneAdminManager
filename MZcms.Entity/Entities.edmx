@@ -79,6 +79,14 @@
           <Property Name="RoleName" Type="nvarchar" MaxLength="100" />
           <Property Name="Description" Type="nvarchar" MaxLength="1000" />
         </EntityType>
+        <EntityType Name="SiteSettings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="100" />
+          <Property Name="Value" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
         <Association Name="FK_Managers_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
           <End Role="Managers" Type="Self.Managers" Multiplicity="*" />
@@ -122,6 +130,7 @@
           <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RolePrivileges" EntityType="Self.RolePrivileges" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SiteSettings" EntityType="Self.SiteSettings" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Managers_Roles" Association="Self.FK_Managers_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Managers" EntitySet="Managers" />
@@ -191,6 +200,7 @@
             <End Role="Members" EntitySet="Members" />
             <End Role="MemberOpenIds" EntitySet="MemberOpenIds" />
           </AssociationSet>
+          <EntitySet Name="SiteSettings" EntityType="MZcms.Entities.SiteSettings" />
         </EntityContainer>
         <EntityType Name="Logs">
           <Key>
@@ -275,6 +285,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="SiteSettings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -357,6 +375,15 @@
                 <ScalarProperty Name="UnionOpenId" ColumnName="UnionOpenId" />
                 <ScalarProperty Name="OpenId" ColumnName="OpenId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteSettings">
+            <EntityTypeMapping TypeName="MZcms.Entities.SiteSettings">
+              <MappingFragment StoreEntitySet="SiteSettings">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

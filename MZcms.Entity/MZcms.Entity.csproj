@@ -83,6 +83,9 @@
     <Compile Include="Roles.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="SiteSettings.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

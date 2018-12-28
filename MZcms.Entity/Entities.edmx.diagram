@@ -14,6 +14,7 @@
         <EntityTypeShape EntityType="MZcms.Entities.Members" Width="1.5" PointX="5.375" PointY="0.625" />
         <EntityTypeShape EntityType="MZcms.Entities.MemberOpenIds" Width="1.5" PointX="7.75" PointY="0.625" />
         <AssociationConnector Association="MZcms.Entities.FK_MemberOpenIds_Members" />
+        <EntityTypeShape EntityType="MZcms.Entities.SiteSettings" Width="1.5" PointX="13.125" PointY="2.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

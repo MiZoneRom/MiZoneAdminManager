@@ -31,5 +31,6 @@ namespace MZcms.Entity
         public virtual DbSet<Logs> Logs { get; set; }
         public virtual DbSet<Members> Members { get; set; }
         public virtual DbSet<MemberOpenIds> MemberOpenIds { get; set; }
+        public virtual DbSet<SiteSettings> SiteSettings { get; set; }
     }
 }
