@@ -12,11 +12,6 @@ namespace MZcms.Web.Framework
         public const string PLATFORM_MANAGER = "MZcms-PlatformManager";
 
         /// <summary>
-        /// 商家管理员登录标识
-        /// </summary>
-        public const string SELLER_MANAGER = "MZcms-SellerManager";
-
-        /// <summary>
         /// 会员登录标识
         /// </summary>
         public const string MZcms_USER = "MZcms-User";
