@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISystem\IManagerService.cs" />
     <Compile Include="ISystem\IOperationLogService.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="ISystem\ISiteSettingService.cs" />

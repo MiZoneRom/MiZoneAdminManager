@@ -7,7 +7,6 @@ namespace MZcms.Web.Framework
 {
     public abstract class BaseWebController : BaseController
     {
-        ISellerManager sellerManager = null;
 
         public long UserId
         {
@@ -36,27 +35,5 @@ namespace MZcms.Web.Framework
             base.OnActionExecuted(filterContext);
         }
 
-        /// <summary>
-        /// 当前管理员
-        /// </summary>
-        public ISellerManager CurrentSellerManager
-        {
-            get
-            {
-                if (sellerManager != null)
-                {
-                    return sellerManager;
-                }
-                else
-                {
-                    long userId = UserCookieEncryptHelper.Decrypt(WebHelper.GetCookie(CookieKeysCollection.SELLER_MANAGER), CookieKeysCollection.USERROLE_SELLERADMIN);
-                    if (userId != 0)
-                    {
-                        sellerManager = ManagerApplication.GetSellerManager(userId);
-                    }
-                }
-                return sellerManager;
-            }
-        }
     }
 }

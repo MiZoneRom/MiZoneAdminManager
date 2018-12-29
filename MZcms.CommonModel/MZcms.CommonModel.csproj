@@ -47,6 +47,8 @@
     <Compile Include="Enum\AdminPrivileges.cs" />
     <Compile Include="Enum\TargetType.cs" />
     <Compile Include="Enum\UserPrivileges.cs" />
+    <Compile Include="ManagerInterface\IManager.cs" />
+    <Compile Include="ManagerInterface\IPaltManager.cs" />
     <Compile Include="Model\WeiXinShareArgs.cs" />
     <Compile Include="Privileage\PrivilegeAttribute.cs" />
     <Compile Include="Privileage\Privleages.cs" />

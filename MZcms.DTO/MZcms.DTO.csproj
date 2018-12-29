@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryModel\ManagerQuery.cs" />
     <Compile Include="QueryModel\OperationLogQuery.cs" />
     <Compile Include="QueryModel\QueryBase.cs" />
   </ItemGroup>

@@ -16,8 +16,6 @@ namespace MZcms.Web.Framework
         /// <summary>
         /// 当前管理员
         /// </summary>
-        ///  
-        /// 
         IPaltManager platManager = null;
 
         public IPaltManager CurrentManager
