@@ -71,9 +71,8 @@
     <Compile Include="BaseControllers\BaseAdminController.cs" />
     <Compile Include="BaseControllers\BaseAsyncController.cs" />
     <Compile Include="BaseControllers\BaseController.cs" />
-    <Compile Include="BaseControllers\BaseSellerController.cs" />
     <Compile Include="BaseControllers\Extension\XmlResult.cs" />
-    <Compile Include="BaseControllers\HiAPIController.cs" />
+    <Compile Include="BaseControllers\MzAPIController.cs" />
     <Compile Include="BaseControllers\Mobile\BaseMobileController.cs" />
     <Compile Include="BaseControllers\Mobile\BaseMobileMemberController.cs" />
     <Compile Include="BaseControllers\Mobile\BaseMobileTemplatesController.cs" />
@@ -81,7 +80,6 @@
     <Compile Include="BaseControllers\Mobile\OAuth\Interface\IMobileOAuth.cs" />
     <Compile Include="BaseControllers\Mobile\OAuth\Interface\MobileOAuthUserInfo.cs" />
     <Compile Include="BaseControllers\Permission\AdminPermission.cs" />
-    <Compile Include="BaseControllers\Permission\SellerPermission.cs" />
     <Compile Include="BaseControllers\Web\BaseMemberController.cs" />
     <Compile Include="BaseControllers\Web\BaseWebController.cs" />
     <Compile Include="Base\ApiErrorCode.cs" />
@@ -91,14 +89,7 @@
     <Compile Include="ExcelResult.cs" />
     <Compile Include="Helper\ApiHelper.cs" />
     <Compile Include="Helper\AppBaseInfoHelper.cs" />
-    <Compile Include="Helper\BrowseHistrory.cs" />
-    <Compile Include="Helper\CartHelper.cs" />
     <Compile Include="Helper\CurrentUrlHelper.cs" />
-    <Compile Include="Helper\OpenAPIHelper.cs" />
-    <Compile Include="Helper\OrderHelper.cs" />
-    <Compile Include="Helper\ShopbranchHelper.cs" />
-    <Compile Include="Helper\ShopHelper.cs" />
-    <Compile Include="Helper\ShopServiceMark.cs" />
     <Compile Include="IEnumerableExtend.cs" />
     <Compile Include="JsonNetResult.cs" />
     <Compile Include="PrivilegeConfig\PrivilegeHelper.cs" />

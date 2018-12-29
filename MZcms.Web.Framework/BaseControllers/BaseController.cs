@@ -17,8 +17,8 @@ namespace MZcms.Web.Framework
     public abstract class BaseController : Controller
     {
         #region MyRegion
-        private SiteSettingsInfo _sitesetting;
-        private UserMemberInfo _currentUser;
+        private SiteSettings _sitesetting;
+        private Members _currentUser;
         #endregion
 
         #region 构造函数
@@ -186,26 +186,6 @@ namespace MZcms.Web.Framework
                     #region 参数特殊处理
                     if (jurdata.IsSpecial)
                     {
-                        #region 店铺参数转换
-                        if (jurdata.PC.ToLower() == @"/shop")
-                        {
-                            //商家首页参数处理
-                            string strid = route.Values["id"].ToString();
-                            long shopId = 0;
-                            long vshopId = 0;
-                            if (!long.TryParse(strid, out shopId))
-                            {
-                                shopId = 0;
-                            }
-                            if (shopId > 0)
-                            {
-                                var vshop = VshopApplication.GetVShopByShopId(shopId);
-                                if (vshop != null)
-                                    vshopId = vshop.Id;
-                            }
-                            jumpUrl = jumpUrl + "/" + vshopId.ToString();
-                        }
-                        #endregion
 
                         //TODO:LRL 订单页面参数转换
                         /* zjt  
@@ -330,70 +310,10 @@ namespace MZcms.Web.Framework
         }
         #endregion
 
-        #region 分销功能
-        /// <summary>
-        /// 获取Cookie内保存的分销销售员编号
-        /// </summary>
-        public List<long> GetDistributionUserLinkId()
-        {
-            List<long> result = new List<long>();
-            string _tmp = Core.Helper.WebHelper.GetCookie(CookieKeysCollection.MZcms_DISTRIBUTIONUSERLINKIDS);
-            if (!string.IsNullOrWhiteSpace(_tmp))
-            {
-                string[] _arrtmp = _tmp.Split(',');
-                long _puid = 0;
-                foreach (var item in _arrtmp)
-                {
-                    if (long.TryParse(item, out _puid))
-                    {
-                        if (_puid > 0)
-                        {
-                            result.Add(_puid);
-                        }
-                    }
-                }
-            }
-            return result;
-        }
-        /// <summary>
-        /// 清理销售员编号，以减少服务层访问
-        /// </summary>
-        public void ClearDistributionUserLinkId()
-        {
-            Core.Helper.WebHelper.DeleteCookie(CookieKeysCollection.MZcms_DISTRIBUTIONUSERLINKIDS);
-        }
-        /// <summary>
-        /// 维护分销员
-        /// </summary>
-        /// <param name="uid"></param>
-        public void SaveDistributionUserLinkId(long partnerid, long shopid, long uid)
-        {
-            if (partnerid > 0 && shopid > 0)
-            {
-                long linkid = 0;
-                linkid = MemberApplication.UpdateShareUserId(uid, partnerid, shopid);
-                List<long> links = GetDistributionUserLinkId();
-                if (linkid > 0)
-                {
-                    links.Add(linkid);
-                }
-                if (links.Count > 0)
-                {
-                    //保存cookie
-                    Core.Helper.WebHelper.SetCookie(CookieKeysCollection.MZcms_DISTRIBUTIONUSERLINKIDS, string.Join(",", links.ToArray()));
-                }
-                else
-                {
-                    ClearDistributionUserLinkId();
-                }
-            }
-        }
-        #endregion
-
         /// <summary>
         /// 当前站点配置
         /// </summary>
-        public SiteSettingsInfo CurrentSiteSetting
+        public SiteSettings CurrentSiteSetting
         {
             get
             {
@@ -406,7 +326,7 @@ namespace MZcms.Web.Framework
         /// <summary>
         /// 当前登录的会员
         /// </summary>
-        public UserMemberInfo CurrentUser
+        public Members CurrentUser
         {
             get
             {
@@ -681,7 +601,7 @@ namespace MZcms.Web.Framework
         #endregion
 
         #region 静态方法
-        public static UserMemberInfo GetUser(HttpRequestBase request)
+        public static Members GetUser(HttpRequestBase request)
         {
             long userId = 0;
             var token = request.QueryString["token"];

@@ -43,7 +43,13 @@
     <Compile Include="CacheKeyCollection.cs" />
     <Compile Include="CommonConst.cs" />
     <Compile Include="Delegates.cs" />
+    <Compile Include="Enum\AdminCatalogType.cs" />
+    <Compile Include="Enum\AdminPrivileges.cs" />
+    <Compile Include="Enum\TargetType.cs" />
+    <Compile Include="Enum\UserPrivileges.cs" />
     <Compile Include="Model\WeiXinShareArgs.cs" />
+    <Compile Include="Privileage\PrivilegeAttribute.cs" />
+    <Compile Include="Privileage\Privleages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryPageModel.cs" />
   </ItemGroup>

@@ -91,22 +91,6 @@ namespace MZcms.Web.Framework
             }
         }
 
-        public static Privileges SellerAdminPrivileges
-        {
-            set
-            {
-                sellerAdminPrivileges = value;
-            }
-            get
-            {
-                //if (sellerAdminPrivileges == null)
-                {
-                    sellerAdminPrivileges = GetPrivileges<SellerPrivilege>();
-                }
-                return sellerAdminPrivileges;
-            }
-        }
-
         /// <summary>
         /// 相当于根目录的路径
         /// </summary>
@@ -114,7 +98,7 @@ namespace MZcms.Web.Framework
         /// <returns></returns>
         public static Privileges GetPrivileges<TEnum>()
         {
-            SiteSettingsInfo sitesetting = SiteSettingApplication.GetSiteSettings();
+            SiteSettings sitesetting = SiteSettingApplication.GetSiteSettings();
             Type type = typeof(TEnum);
             FieldInfo[] fields = type.GetFields();
             if (fields.Length == 1)
@@ -293,7 +277,7 @@ namespace MZcms.Web.Framework
         /// <returns></returns>
         public static Privileges GetPrivileges<TEnum>(AdminCatalogType Type)
         {
-            SiteSettingsInfo sitesetting = SiteSettingApplication.GetSiteSettings();
+            SiteSettings sitesetting = SiteSettingApplication.GetSiteSettings();
 
             Type type = typeof(TEnum);
             FieldInfo[] fields = type.GetFields();
