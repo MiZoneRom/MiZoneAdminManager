@@ -179,14 +179,31 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\Common\" />
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MZcms.Application\MZcms.Application.csproj">
+      <Project>{7a412f46-b2b1-42f4-ab5e-3ea03f9ba194}</Project>
+      <Name>MZcms.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MZcms.CommonModel\MZcms.CommonModel.csproj">
+      <Project>{03440b05-bf8b-4b13-8f54-1ad1c819a91f}</Project>
+      <Name>MZcms.CommonModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MZcms.Core\MZcms.Core.csproj">
       <Project>{720ff9a7-86ed-4d2a-8bb2-e9f958d59bf7}</Project>
       <Name>MZcms.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MZcms.DTO\MZcms.DTO.csproj">
+      <Project>{dd95a3fd-691c-427a-9a88-e3ff44e5951e}</Project>
+      <Name>MZcms.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MZcms.Entity\MZcms.Entity.csproj">
+      <Project>{6cfef5cd-7fa4-47d8-8f7f-67fc0c5069e6}</Project>
+      <Name>MZcms.Entity</Name>
     </ProjectReference>
     <ProjectReference Include="..\MZcms.IServices\MZcms.IServices.csproj">
       <Project>{1ea8fc44-c40a-4511-9062-8d453430be44}</Project>
